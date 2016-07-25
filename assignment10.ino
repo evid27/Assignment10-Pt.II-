@@ -19,9 +19,9 @@ void setup() {
 }
 
 void loop() {
-  int frontDistance = sensor1.getDistance();
-  int leftDistance =sensor2.getDistance();
-  int rightDistance = sensor3.getDistance();
+  int frontDistance = sensor1.getDistance(10);
+  int leftDistance =sensor2.getDistance(10);
+  int rightDistance = sensor3.getDistance(10);
   int TOTAL = frontDistance + leftDistance +  rightDistance;
   int A.M.  = TOTAL/3;
 //  bluetooth.print(A.M.);
