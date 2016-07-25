@@ -1,7 +1,7 @@
 #include <Smartcar.h>
 
 SR04 sensor1, sensor2, sensor3;// 1 = front, 2 = left, 3 = right
-SoftwareSerial bluetooth(6,7);
+//SoftwareSerial bluetooth(6,7);
 
 const int TRIGGER_1 = 6; // Χρησιμοποιήστε τα pin που θέλετε
 const int ECHO_1 = 7; 
