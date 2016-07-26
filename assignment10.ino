@@ -9,7 +9,8 @@ const int TRIGGER_2 = 5;
 const int ECHO_2 = 4;
 int leftTOTAL = 0;
 int rightTOTAL = 0;
-int counter = 0;
+int rMeasurements = 10;
+int lMeasurements = 10;
 
 void setup() {
   Serial.begin(9600);
@@ -24,10 +25,10 @@ void loop() {
   int rightDistance =sensor2.getDistance();
   
   if (leftDistance > 0) {
-    leftTOTAL = (leftTOTAL + leftDistance)*10;// Αν η αριστερή απόσταση είναι μεγαλύτερη από το 0, πρόσθεσέ την στις τιμές από τον αριστερό αισθητήρα
+    leftTOTAL = leftTOTAL + leftDistance;// Αν η αριστερή απόσταση είναι μεγαλύτερη από το 0, πρόσθεσέ την στις τιμές από τον αριστερό αισθητήρα
   }
   if (rightDistance > 0) {
-    rightTOTAL = (rightTOTAL + rightDistance)*10;//Το ίδιο για τον δεξή αισθητήρα και τις μετρήσεις του
+    rightTOTAL = rightTOTAL + rightDistance;//Το ίδιο για τον δεξή αισθητήρα και τις μετρήσεις του
   }
   int rAVERAGE = rightTOTAL/10;
   int lAVERAGE = leftTOTAL/10;
