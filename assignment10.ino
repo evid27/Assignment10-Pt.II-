@@ -1,14 +1,13 @@
 #include <Smartcar.h>
 
-SR04 sensor1, sensor2, sensor3;// 1 = front, 2 = left, 3 = right
+SR04 sensor1, sensor2;// 1 = left, 2 = right, 
 //SoftwareSerial bluetooth(6,7);
 
 const int TRIGGER_1 = 6; // Χρησιμοποιήστε τα pin που θέλετε
 const int ECHO_1 = 7; 
 const int TRIGGER_2 = 5;
 const int ECHO_2 = 4;
-const int TRIGGER_3 = 9;
-const int ECHO_ = 8;
+int TOTAL = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -19,10 +18,16 @@ void setup() {
 }
 
 void loop() {
-  int frontDistance = sensor1.getDistance(10);
-  int leftDistance =sensor2.getDistance(10);
-  int rightDistance = sensor3.getDistance(10);
+  int leftDistance = sensor1.getDistance(10);
+  int rightDistance =sensor2.getDistance(10);
+  
+  if (leftDistance > 0) {
+    TOTAL = (TOTAL + leftDistance)*10;
+  }
+  if (rightDistance >0 ) {
+    TOTAL = (TOTAL + rightDistance)*10;
+  }
   int TOTAL = frontDistance + leftDistance +  rightDistance;
-  int A.M.  = TOTAL/3;
+  int A.M.  = TOTAL/10;
 //  bluetooth.print(A.M.);
 }
