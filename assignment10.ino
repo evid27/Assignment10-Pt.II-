@@ -7,7 +7,9 @@ const int TRIGGER_1 = 6; // Χρησιμοποιήστε τα pin που θέλ�
 const int ECHO_1 = 7; 
 const int TRIGGER_2 = 5;
 const int ECHO_2 = 4;
-int TOTAL = 0;
+int leftTOTAL = 0;
+int rightTOTAL = 0;
+int counter = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -18,16 +20,16 @@ void setup() {
 }
 
 void loop() {
-  int leftDistance = sensor1.getDistance(10);
-  int rightDistance =sensor2.getDistance(10);
+  int leftDistance = sensor1.getDistance();
+  int rightDistance =sensor2.getDistance();
   
   if (leftDistance > 0) {
-    TOTAL = (TOTAL + leftDistance)*10;
+    leftTOTAL = (leftTOTAL + leftDistance)*10;// Αν η αριστερή απόσταση είναι μεγαλύτερη από το 0, πρόσθεσέ την στις τιμές από τον αριστερό αισθητήρα
   }
-  if (rightDistance >0 ) {
-    TOTAL = (TOTAL + rightDistance)*10;
+  if (rightDistance > 0) {
+    rightTOTAL = (rightTOTAL + rightDistance)*10;//Το ίδιο για τον δεξή αισθητήρα και τις μετρήσεις του
   }
-  int TOTAL = frontDistance + leftDistance +  rightDistance;
-  int A.M.  = TOTAL/10;
-//  bluetooth.print(A.M.);
+  int rAVERAGE = rightTOTAL/10;
+  int lAVERAGE = leftTOTAL/10;
+//  bluetooth.print(AVERAGE);
 }
