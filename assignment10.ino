@@ -26,9 +26,17 @@ void loop() {
   
   if (leftDistance > 0) {
     leftTOTAL = leftTOTAL + leftDistance;// Αν η αριστερή απόσταση είναι μεγαλύτερη από το 0, πρόσθεσέ την στις τιμές από τον αριστερό αισθητήρα
+    lMeasurements = lMeasurements -1;
   }
   if (rightDistance > 0) {
     rightTOTAL = rightTOTAL + rightDistance;//Το ίδιο για τον δεξή αισθητήρα και τις μετρήσεις του
+    rMeasurements = rMeasurements -1;
+  }
+  if (lMeasurements == 0){
+    leftTOTAL = 0;
+  }
+  if (rMeasurements == 0){
+    rightTOTAL = 0;
   }
   int rAVERAGE = rightTOTAL/10;
   int lAVERAGE = leftTOTAL/10;
